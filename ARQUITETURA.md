@@ -27,14 +27,6 @@ flowchart LR
 
     PROC --> Blob["📦 Storage<br/>Azure Blob Storage<br/>Azurite (local dev)"]
 
-    Vivo["Vivo<br/>SuporteONE • Teams"]
-    WM["White Martins<br/>NFS-e • Gigi"]
-    Popai["Popai<br/>Periskope • Mercos<br/>Campanhas"]
-
-    U --- Vivo
-    U --- WM
-    U --- Popai
-
     subgraph Deploy["🚀 Entrega e Operação"]
         direction TB
         CI["CI/CD<br/>GitHub Actions<br/>ci.yml • deploy.yml • tests.yml"]
