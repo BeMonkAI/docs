@@ -71,10 +71,10 @@ graph TB
     F2 -.->|"supervisiona"| INFRA
     F3 -.->|"supervisiona"| FRONTEND
 
-    classDef human fill:#2563eb,stroke:#1e40af,color:#fff,font-weight:bold
-    classDef ai fill:#7c3aed,stroke:#5b21b6,color:#fff,font-weight:bold
-    classDef skill fill:#1e1e2e,stroke:#6366f1,color:#c4b5fd,font-size:11px
-    classDef area fill:#0f172a,stroke:#334155,color:#94a3b8
+    classDef human fill:#4e2d0d,stroke:#3a2009,color:#f0ebe3,font-weight:bold
+    classDef ai fill:#824920,stroke:#4e2d0d,color:#f0ebe3,font-weight:bold
+    classDef skill fill:#f0ebe3,stroke:#9b6b3a,color:#4e2d0d,font-size:11px
+    classDef area fill:#cfc1af,stroke:#9b6b3a,color:#4e2d0d
 
     class CEO,F2,F3 human
     class CC ai
