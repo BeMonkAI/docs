@@ -27,14 +27,13 @@ flowchart LR
 
     PROC --> Blob["📦 Storage<br/>Azure Blob Storage<br/>Azurite (local dev)"]
 
-    subgraph Clients["🏢 Clientes"]
-        direction TB
-        Vivo["Vivo<br/>SuporteONE • Teams"]
-        WM["White Martins<br/>NFS-e • Gigi"]
-        Popai["Popai<br/>Periskope • Mercos<br/>Campanhas"]
-    end
+    Vivo["Vivo<br/>SuporteONE • Teams"]
+    WM["White Martins<br/>NFS-e • Gigi"]
+    Popai["Popai<br/>Periskope • Mercos<br/>Campanhas"]
 
-    U --- Clients
+    U --- Vivo
+    U --- WM
+    U --- Popai
 
     subgraph Deploy["🚀 Entrega e Operação"]
         direction TB
