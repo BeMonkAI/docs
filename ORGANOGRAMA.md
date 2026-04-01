@@ -2,7 +2,7 @@
 
 > Última atualização: 2026-04-01
 
-A MonkAI opera com **3 humanos + 22 agentes IA**, cada um com domínios de ownership definidos.
+A MonkAI opera com **3 humanos + 23 agentes IA**, cada um com domínios de ownership definidos.
 Humanos decidem **o quê** e **por quê**. Agentes executam **como** e **quando**.
 
 ---
@@ -15,7 +15,7 @@ graph TB
 
     F2["👤 Funcionário 2<br/><i>Backend · IA · Integrações · Dados</i>"]
     F3["👤 Funcionário 3<br/><i>Frontend · UX · Suporte · Ops</i>"]
-    CC["⚡ Claude Code<br/><i>IA Operacional · 22 Skills · 24/7</i>"]
+    CC["⚡ Claude Code<br/><i>IA Operacional · 23 Skills · 24/7</i>"]
 
     CEO --> F2
     CEO --> F3
@@ -35,6 +35,7 @@ graph TB
         deepread_contract["/deepread-contract<br/>Análise de Contratos"]
         aiconsulta["/aiconsulta<br/>Consulta IA + Supabase"]
         sortimento["/sortimento<br/>Sortimento Inteligente"]
+        pricing["/pricing<br/>Inteligência de Precificação"]
         monkai_trace["/monkai-trace<br/>SDK Observabilidade"]
         monkai_bot["/monkai-bot<br/>Telegram Bot"]
     end
@@ -77,7 +78,7 @@ graph TB
 
     class CEO,F2,F3 human
     class CC ai
-    class monkai,gestao,assistente,sync,atendentepro,grkmemory,deepread,deepread_contract,aiconsulta,sortimento,monkai_trace,monkai_bot,deepread_saas,monkai_hub,trackfuel,gtm,marketing,monkaidrop,financas,rh,monkai_deploy,claude_api skill
+    class monkai,gestao,assistente,sync,atendentepro,grkmemory,deepread,deepread_contract,aiconsulta,sortimento,pricing,monkai_trace,monkai_bot,deepread_saas,monkai_hub,trackfuel,gtm,marketing,monkaidrop,financas,rh,monkai_deploy,claude_api skill
     class ORCH,BACKEND,FRONTEND,OPS,INFRA area
 ```
 
@@ -89,7 +90,7 @@ graph TB
 |---|---|---|---|
 | **Estratégia** | Arthur | `/monkai`, `/assistente` | Arthur decide, agente organiza |
 | **DevOps / CI/CD** | Arthur | `/gestao`, `/monkai-deploy` | Agente executa, Arthur aprova |
-| **Backend / IA** | Func. 2 | `/atendentepro`, `/grkmemory`, `/deepread`, `/monkai-trace` | Humano arquiteta, agente implementa |
+| **Backend / IA** | Func. 2 | `/atendentepro`, `/grkmemory`, `/deepread`, `/monkai-trace`, `/pricing` | Humano arquiteta, agente implementa |
 | **Integrações** | Func. 2 | `/monkai-bot`, `/sync`, `/claude-api` | Humano define, agente conecta |
 | **Frontend** | Func. 3 | `/monkai-hub`, `/deepread-saas`, `/trackfuel` | Humano desenha, agente constrói |
 | **Comercial** | Arthur | `/gtm`, `/marketing`, `/monkaidrop` | Agente produz conteúdo, Arthur valida |
@@ -119,6 +120,7 @@ graph TB
 | `/deepread-contract` | Análise automatizada de contratos | `DeepRead.contract` |
 | `/aiconsulta` | Consulta IA com Supabase | `aiconsulta` |
 | `/sortimento` | Sortimento inteligente de produtos | — |
+| `/pricing` | Inteligência de precificação (whitelabel Vivo) | `vivo-pricing-compass` |
 | `/monkai-trace` | SDK de observabilidade para agentes | `monkai-trace` |
 | `/monkai-bot` | Bot Telegram da MonkAI | — |
 
@@ -155,4 +157,4 @@ graph TB
 2. **Agente = operador do domínio** — executa, monitora, escala
 3. **Cada domínio tem exatamente 1 dono humano** — sem ambiguidade
 4. **Claude Code é o 4º funcionário** — opera 24/7, mantém contexto via memories
-5. **3 humanos + 22 agentes = capacidade operacional de ~10 pessoas**
+5. **3 humanos + 23 agentes = capacidade operacional de ~10 pessoas**
