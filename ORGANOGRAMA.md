@@ -11,137 +11,58 @@ Humanos decidem **o quê** e **por quê**. Agentes executam **como** e **quando*
 
 ```mermaid
 graph TB
-    CEO["🧠 Arthur<br/>CEO / Fundador<br/><i>Estratégia · Produto · Arquitetura</i>"]
-
-    F2["👤 Funcionário 2<br/><i>Backend · IA · Integrações · Dados</i>"]
-    F3["👤 Funcionário 3<br/><i>Frontend · UX · Suporte · Ops</i>"]
-    CC["⚡ Claude Code<br/><i>IA Operacional · 9 Agents · 24/7</i>"]
+    CEO["🧠 Arthur<br/>CEO / Fundador"]
+    F2["👤 Funcionário 2<br/>Backend · IA · Dados"]
+    F3["👤 Funcionário 3<br/>Frontend · UX · Ops"]
+    CC["⚡ Claude Code<br/>9 Agents · 24/7"]
 
     CEO --> F2
     CEO --> F3
     CEO --> CC
 
-    subgraph ROUTER["🎯 Router Central"]
-        monkai["/monkai<br/>Dashboard + Roteamento<br/>Classifica → Despacha para Agent"]
+    CC --> monkai["/monkai<br/>Router + Dashboard"]
+
+    subgraph PRODUTOS["Produtos"]
+        direction LR
+        distribution["/distribution<br/>TrackFuel · AIConsulta<br/>MonkAI Drop · DeepRead SaaS"]
+        infra["/infra<br/>DeepRead · Contract<br/>GRKMemory · AtendentePro · Trace"]
+        observability["/observability<br/>MonkAI Hub"]
+        vivo["/vivo<br/>Pricing · Chat Hub<br/>Sortimento"]
     end
 
-    subgraph DISTRIBUTION["📦 Distribution Agent"]
-        distribution["/distribution<br/>Produtos de Distribuição"]
-        trackfuel["TrackFuel<br/>PWA Coaching Fitness"]
-        aiconsulta["AIConsulta<br/>SaaS Clínicas"]
-        monkaidrop["MonkAI Drop<br/>Produto de Distribuição"]
-        deepread_saas["DeepRead SaaS<br/>Document Insight Hub"]
-        distribution --> trackfuel
-        distribution --> aiconsulta
-        distribution --> monkaidrop
-        distribution --> deepread_saas
+    subgraph OPERACOES["Operações"]
+        direction LR
+        devops["/devops<br/>Deploy · Alerts · Gestão"]
+        content["/content<br/>Marketing · Campanhas"]
+        gtm["/gtm<br/>Go-to-Market<br/>SDR · Customer · Funil"]
+        ops["/ops<br/>Assistente · Finanças · RH"]
+        bot["/bot<br/>Telegram Bot · Sync"]
     end
 
-    subgraph INFRA["⚙️ Infra Agent"]
-        infra["/infra<br/>Produtos de Infraestrutura (IP)"]
-        deepread["DeepRead<br/>OCR / Extração"]
-        deepread_contract["DeepRead Contract<br/>Análise de Contratos"]
-        grkmemory["GRKMemory<br/>Memória Contextual"]
-        atendentepro["AtendentePro<br/>Agente de Atendimento"]
-        monkai_trace["MonkAI Trace<br/>SDK Observabilidade"]
-        infra --> deepread
-        infra --> deepread_contract
-        infra --> grkmemory
-        infra --> atendentepro
-        infra --> monkai_trace
-    end
+    monkai --> PRODUTOS
+    monkai --> OPERACOES
 
-    subgraph OBSERVABILITY["📊 Observability Agent"]
-        observability["/observability<br/>Observabilidade"]
-        monkai_hub["MonkAI Hub<br/>Dashboard Central"]
-        observability --> monkai_hub
-    end
-
-    subgraph VIVO["🟣 Vivo Agent"]
-        vivo["/vivo<br/>Produtos Vivo"]
-        pricing["Pricing Compass<br/>Precificação"]
-        vivo_chat_hub["Vivo Chat Hub<br/>Atendimento"]
-        sortimento["Sortimento<br/>Sortimento Inteligente"]
-        vivo --> pricing
-        vivo --> vivo_chat_hub
-        vivo --> sortimento
-    end
-
-    subgraph DEVOPS["☁️ DevOps Agent"]
-        devops["/devops<br/>Infra Cloud · CI/CD"]
-        deploy["Deploy<br/>Azure Functions · Artifacts"]
-        alerts["Alerts<br/>Monitoramento · Erros"]
-        gestao["Gestão<br/>PRs · Issues · Board"]
-        devops --> deploy
-        devops --> alerts
-        devops --> gestao
-    end
-
-    subgraph CONTENT["🎨 Content Agent"]
-        content["/content<br/>Conteúdo de Marca"]
-        marketing_skill["Marketing<br/>Campanhas · Redes Sociais"]
-        content --> marketing_skill
-    end
-
-    subgraph GTM_AGENT["🚀 GTM Agent"]
-        gtm["/gtm<br/>Go-to-Market"]
-        gtm_note["Estratégia GTM<br/>DeepRead SaaS · TrackFuel · AIConsulta<br/><i>Futuro: SDR · Customer · Funil</i>"]
-        gtm --> gtm_note
-    end
-
-    subgraph OPS["📋 Ops Agent"]
-        ops["/ops<br/>Operações Internas"]
-        assistente["Assistente<br/>Agenda · Tarefas · Email"]
-        financas["Finanças<br/>NFs · Fluxo de Caixa"]
-        rh_skill["RH<br/>Contratação · Processos"]
-        ops --> assistente
-        ops --> financas
-        ops --> rh_skill
-    end
-
-    subgraph BOT["🤖 Bot Agent"]
-        bot["/bot<br/>Telegram + Sync"]
-        monkai_bot["MonkAI Bot<br/>Bot Telegram"]
-        sync["Sync<br/>Claude Code ↔ Bot"]
-        bot --> monkai_bot
-        bot --> sync
-    end
-
-    CC --> ROUTER
-    monkai --> DISTRIBUTION
-    monkai --> INFRA
-    monkai --> OBSERVABILITY
-    monkai --> VIVO
-    monkai --> DEVOPS
-    monkai --> CONTENT
-    monkai --> GTM_AGENT
-    monkai --> OPS
-    monkai --> BOT
-
-    CEO -.->|"supervisiona"| ROUTER
-    CEO -.->|"supervisiona"| OPS
-    CEO -.->|"supervisiona"| GTM_AGENT
-    CEO -.->|"supervisiona"| CONTENT
-    F2 -.->|"supervisiona"| INFRA
-    F2 -.->|"supervisiona"| DEVOPS
-    F2 -.->|"supervisiona"| BOT
-    F3 -.->|"supervisiona"| DISTRIBUTION
-    F3 -.->|"supervisiona"| OBSERVABILITY
-    F3 -.->|"supervisiona"| VIVO
+    CEO -.->|"supervisiona"| ops
+    CEO -.->|"supervisiona"| gtm
+    CEO -.->|"supervisiona"| content
+    F2 -.->|"supervisiona"| infra
+    F2 -.->|"supervisiona"| devops
+    F2 -.->|"supervisiona"| bot
+    F3 -.->|"supervisiona"| distribution
+    F3 -.->|"supervisiona"| observability
+    F3 -.->|"supervisiona"| vivo
 
     classDef human fill:#4e2d0d,stroke:#3a2009,color:#f0ebe3,font-weight:bold
     classDef ai fill:#824920,stroke:#4e2d0d,color:#f0ebe3,font-weight:bold
     classDef router fill:#2d4e0d,stroke:#1a3a09,color:#f0ebe3,font-weight:bold
     classDef agent fill:#f0ebe3,stroke:#9b6b3a,color:#4e2d0d,font-weight:bold
-    classDef skill fill:#fff,stroke:#cfc1af,color:#4e2d0d,font-size:11px
     classDef area fill:#cfc1af,stroke:#9b6b3a,color:#4e2d0d
 
     class CEO,F2,F3 human
     class CC ai
     class monkai router
     class distribution,infra,observability,vivo,devops,content,gtm,ops,bot agent
-    class trackfuel,aiconsulta,monkaidrop,deepread_saas,deepread,deepread_contract,grkmemory,atendentepro,monkai_trace,monkai_hub,pricing,vivo_chat_hub,sortimento,deploy,alerts,gestao,marketing_skill,gtm_note,assistente,financas,rh_skill,monkai_bot,sync skill
-    class ROUTER,DISTRIBUTION,INFRA,OBSERVABILITY,VIVO,DEVOPS,CONTENT,GTM_AGENT,OPS,BOT area
+    class PRODUTOS,OPERACOES area
 ```
 
 ---
